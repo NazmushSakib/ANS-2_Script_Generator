@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Flowibite -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <!-- font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/69628e32c7.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- tailwindCSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      .font-jetMono {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-style: normal;
+      }
+      @layer components {
+        .input-field {
+          @apply placeholder-gray-400 text-base rounded-lg focus:ring-blue-400 focus:border-green-500 block w-full px-3.5 py-3 shadow-lg;
+        }
+        .labelCSS {
+          @apply block mb-2.5 text-sm font-medium;
+        }
+        .fieldsetCSS {
+          @apply p-4 border border-stone-600 rounded-lg dark:border-stone-600;
+        }
+        .select-btn{
+          @apply block w-full px-3 py-2.5 bg-white  border  text-sm rounded-lg focus:ring-blue-400 focus:border-green-500 shadow-lg mb-4;
+        }
+
+      }
+    </style>
+  </head>
+  <body class="bg-gray-200 max-w-3/4 mx-auto">
+    <form action="" id="text-form">
+      <div>
+        <fieldset class="fieldsetCSS">
+          <legend class="font-bold text-xl">Connecting Node</legend>
+          <div class="w-3/4 mx-auto flex justify-between gap-10">
+            <div class="flex-1">
+              <label
+                for="small"
+                class="block mb-2.5 text-sm font-medium "
+                >Select an MGC</label
+              >
+              <select
+                id="small"
+                class="select-btn"
+              >
+                <option selected>Choose an UAC</option>
+                <option value="mogUAC">Moghbazar_UAC</option>
+                <option value="rmnUAC">Ramna_UAC</option>
+              </select>
+            </div>
+
+            <div class="flex-1">
+              <label
+                for="default"
+                class="block mb-2.5 text-sm font-medium "
+                >Select an SBC</label
+              >
+              <select
+                id="default"
+                class="select-btn"
+              >
+                <option selected>Choose a ISBC</option>
+                <option value="mog">Moghbazar_ISBC</option>
+                <option value="rmn">Ramna_ISBC</option>
+                <option value="khl">Khulna_ISBC</option>
+                <option value="ctg">Chattogram_ISBC</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-5">
+        <section class="flex-1">
+          <fieldset class="fieldsetCSS">
+            <legend class="font-bold text-xl">IP Information</legend>
+            <div class="mb-8">
+              <label for="TG-name" class="labelCSS">TG Name</label>
+              <input
+                id="TG-name"
+                type="text"
+                placeholder="icx_ios"
+                value="icx_ios"
+                required
+                class="input-field"
+              />
+            </div>
+
+            <div class="mb-8">
+              <label for="signalIP" class="labelCSS"
+                >Peer Exchange Signaling IP</label
+              >
+              <input
+                id="signalIP"
+                type="text"
+                placeholder="10.10.10.10"
+                value="10.10.10.10"
+                required
+                class="input-field"
+              />
+            </div>
+
+            <div class="mb-8">
+              <label for="mediaIP" class="labelCSS"
+                >Peer Exchange Media IP</label
+              >
+              <input
+                id="mediaIP"
+                type="text"
+                placeholder="10.10.10.10"
+                value="10.10.10.10"
+                required
+                class="input-field"
+              />
+            </div>
+            <!-- mask -->
+            <div class="mb-8">
+              <label for="mediaMask" class="labelCSS"
+                >Peer Exchange Media Mask</label
+              >
+              <input
+                id="mediaMask"
+                type="text"
+                placeholder="255.255.255.x"
+                value="255.255.255.192"
+                required
+                class="input-field"
+              />
+            </div>
+          </fieldset>
+        </section>
+        <!-- IP info section ends -->
+        <!-- SBC info section starts -->
+        <section class="flex-1">
+          <fieldset class="fieldsetCSS">
+            <legend class="font-bold text-xl">For SBC info</legend>
+            <div class="mb-8">
+              <label for="externalPort" class="labelCSS"
+                >For External Port [SIPCFG local port Range:5061-5188]</label
+              >
+              <input
+                id="externalPort"
+                type="text"
+                placeholder="5065"
+                value="5065"
+                required
+                class="input-field"
+              />
+            </div>
+            <div class="mb-8">
+              <label for="internalPort" class="labelCSS"
+                >For Internal Port [SIPCFG server port Range:5051-5160]</label
+              >
+              <input
+                id="internalPort"
+                type="text"
+                placeholder="5053"
+                value="5053"
+                required
+                class="input-field"
+              />
+            </div>
+          </fieldset>
+        </section>
+      </div>
+
+      <div class="flex justify-center my-12">
+        <button
+          id="submit"
+          type="submit"
+          class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5 mx-auto"
+        >
+          <i class="fa-regular fa-circle-check"></i> Submit
+        </button>
+      </div>
+    </form>
+
+    <div
+      id="clipboard-container"
+      class="space-y-4 w-full max-w-2xl mx-auto my-8"
+    >
+      <!-- Textareas will be generated here -->
+    </div>
+
+    <!-- Template (hidden) -->
+    <template id="clipboard-template">
+      <div
+        id="outputSection"
+        class="hidden bg-white rounded-2xl border border-gray-200 p-6 shadow-sm"
+      >
+        <!-- Add Signaling IPRT -->
+        <div class="bg-blue-100 p-4 rounded-lg mb-8"></div>
+      </div>
+      <div class="relative">
+        <h3 class="text-xl font-medium text-gray-500 mb-3 topic"></h3>
+        <textarea
+          rows="3"
+          class="clipboard-text font-jetMono bg-white border border-default-medium text-body text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body resize-none"
+          readonly
+        ></textarea>
+
+        <button
+          type="button"
+          class="copy-btn absolute flex items-center end-1.5 top-12 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-4 py-2.5 text-center leading-5"
+        >
+          <span class="default-message flex items-center gap-2">
+            <i class="fa-regular fa-clipboard"></i>
+            <span class="font-semibold"> Copy</span>
+          </span>
+
+          <span class="success-message hidden flex items-center gap-2">
+            <i class="fa-solid fa-check"></i>
+            <span class="font-semibold text-fg-brand">Copied!</span>
+          </span>
+        </button>
+      </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
