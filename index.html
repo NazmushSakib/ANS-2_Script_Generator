@@ -3,7 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ANS-2 New TG Script Geneartor</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Flowibite -->
@@ -34,29 +42,29 @@
         .fieldsetCSS {
           @apply p-4 border border-stone-600 rounded-lg dark:border-stone-600;
         }
-        .select-btn{
+        .select-btn {
           @apply block w-full px-3 py-2.5 bg-white  border  text-sm rounded-lg focus:ring-blue-400 focus:border-green-500 shadow-lg mb-4;
         }
-
+        .internalFlexCSS {
+          @apply flex flex-col lg:flex-row gap-12 mx-8;
+        }
+        .submitBtn{
+          @apply text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5 mx-auto;
+        }
       }
     </style>
   </head>
   <body class="bg-gray-200 max-w-3/4 mx-auto">
     <form action="" id="text-form">
       <div>
-        <fieldset class="fieldsetCSS">
+        <fieldset class="fieldsetCSS my-8">
           <legend class="font-bold text-xl">Connecting Node</legend>
           <div class="w-3/4 mx-auto flex justify-between gap-10">
             <div class="flex-1">
-              <label
-                for="small"
-                class="block mb-2.5 text-sm font-medium "
+              <label for="small" class="block mb-2.5 text-sm font-medium"
                 >Select an MGC</label
               >
-              <select
-                id="small"
-                class="select-btn"
-              >
+              <select id="small" class="select-btn">
                 <option selected>Choose an UAC</option>
                 <option value="mogUAC">Moghbazar_UAC</option>
                 <option value="rmnUAC">Ramna_UAC</option>
@@ -64,15 +72,10 @@
             </div>
 
             <div class="flex-1">
-              <label
-                for="default"
-                class="block mb-2.5 text-sm font-medium "
+              <label for="default" class="block mb-2.5 text-sm font-medium"
                 >Select an SBC</label
               >
-              <select
-                id="default"
-                class="select-btn"
-              >
+              <select id="default" class="select-btn">
                 <option selected>Choose a ISBC</option>
                 <option value="mog">Moghbazar_ISBC</option>
                 <option value="rmn">Ramna_ISBC</option>
@@ -83,17 +86,17 @@
           </div>
         </fieldset>
       </div>
-      <div class="flex flex-col lg:flex-row gap-5">
-        <section class="flex-1">
-          <fieldset class="fieldsetCSS">
-            <legend class="font-bold text-xl">IP Information</legend>
+      <fieldset class="fieldsetCSS">
+        <legend class="font-bold text-xl">SBC Information</legend>
+        <div class="internalFlexCSS">
+          <section class="flex-1">
             <div class="mb-8">
               <label for="TG-name" class="labelCSS">TG Name</label>
               <input
                 id="TG-name"
                 type="text"
-                placeholder="icx_ios"
-                value="icx_ios"
+                placeholder="icx_is"
+                value="icx_is"
                 required
                 class="input-field"
               />
@@ -140,19 +143,27 @@
                 class="input-field"
               />
             </div>
-          </fieldset>
-        </section>
-        <!-- IP info section ends -->
-        <!-- SBC info section starts -->
-        <section class="flex-1">
-          <fieldset class="fieldsetCSS">
-            <legend class="font-bold text-xl">For SBC info</legend>
+          </section>
+          
+          <section class="flex-1">
             <div class="mb-8">
-              <label for="externalPort" class="labelCSS"
-                >For External Port [SIPCFG local port Range:5061-5188]</label
+              <label for="TGnum" class="labelCSS">TG Number</label>
+              <input
+                id="TGnum"
+                type="text"
+                placeholder="400"
+                value="400"
+                required
+                class="input-field"
+              />
+            </div>
+            <div class="mb-8">
+              <label for="externalTGport" class="labelCSS"
+                >LPORT = PPORT for External ISIPTG [SIPCFG local port
+                Range:5061-5188]</label
               >
               <input
-                id="externalPort"
+                id="externalTGport"
                 type="text"
                 placeholder="5065"
                 value="5065"
@@ -161,11 +172,25 @@
               />
             </div>
             <div class="mb-8">
-              <label for="internalPort" class="labelCSS"
-                >For Internal Port [SIPCFG server port Range:5051-5160]</label
+              <label for="internaLocalPort" class="labelCSS"
+                >ISBC Local Port For Internal ISIPTG TG
+              </label>
+              <input
+                id="internaLocalPort"
+                type="text"
+                placeholder="5066"
+                value="5066"
+                required
+                class="input-field"
+              />
+            </div>
+            <div class="mb-8">
+              <label for="internaPeerPortForUAC" class="labelCSS"
+                >ISBC PPORT for UAC for Internal ISIPTG [SIPCFG server port
+                Range:5051-5060]</label
               >
               <input
-                id="internalPort"
+                id="internaPeerPortForUAC"
                 type="text"
                 placeholder="5053"
                 value="5053"
@@ -173,15 +198,86 @@
                 class="input-field"
               />
             </div>
-          </fieldset>
-        </section>
-      </div>
-
+          </section>
+        </div>
+      </fieldset>
+      <fieldset class="fieldsetCSS my-8">
+        <legend class="font-bold text-xl">UAC Information</legend>
+        <div class="internalFlexCSS">
+          
+          <div class="flex-1">
+            <div class="mb-8">
+              <label for="uacLocalPort" class="labelCSS"
+                >Local Server Port(LSRVP) [SIPCFG server port
+                Range:5051-5060]</label
+              >
+              <input
+                id="uacLocalPort"
+                type="text"
+                placeholder="5053"
+                value="5053"
+                required
+                class="input-field"
+              />
+            </div>
+            <div class="mb-8">
+              <label for="prefix" class="labelCSS"
+                >Add a call test number(Optional)</label
+              >
+              <input
+                id="prefix"
+                type="text"
+                placeholder="Called or B-Party number"
+                value="01521493628"
+                class="input-field"
+              />
+            </div>
+            <div class="mb-8">
+              <label for="minNumberLength" class="labelCSS"
+                >Minimum Number Length(Optional)</label
+              >
+              <input
+                id="minNumberLength"
+                type="text"
+                placeholder="9"
+                value="9"
+                class="input-field"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="mb-8">
+              <label for="osuPort" class="labelCSS">Remote URI(OSU) Port</label>
+              <input
+                id="osuPort"
+                type="text"
+                placeholder="5053"
+                value="5053"
+                required
+                class="input-field"
+              />
+            </div>
+            <div class="mb-8">
+              <label for="maxNumberLength" class="labelCSS"
+                >Maximum Number Length(Optional)</label
+              >
+              <input
+                id="maxNumberLength"
+                type="text"
+                placeholder="11"
+                value="11"
+                class="input-field"
+              />
+            </div>
+          </div>
+          
+        </div>
+      </fieldset>
       <div class="flex justify-center my-12">
         <button
           id="submit"
           type="submit"
-          class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center leading-5 mx-auto"
+          class="submitBtn"
         >
           <i class="fa-regular fa-circle-check"></i> Submit
         </button>
@@ -205,7 +301,8 @@
         <div class="bg-blue-100 p-4 rounded-lg mb-8"></div>
       </div>
       <div class="relative">
-        <h3 class="text-xl font-medium text-gray-500 mb-3 topic"></h3>
+        <h2 class="title text-2xl font-semibold text-gray-900 mb-3 text-center"></h2>
+        <h3 class="topic text-xl font-medium text-gray-500 mb-3"></h3>
         <textarea
           rows="3"
           class="clipboard-text font-jetMono bg-white border border-default-medium text-body text-sm rounded-lg focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body resize-none"
@@ -214,7 +311,7 @@
 
         <button
           type="button"
-          class="copy-btn absolute flex items-center end-1.5 top-12 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-4 py-2.5 text-center leading-5"
+          class="copy-btn absolute flex items-center end-1.5 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-4 py-2.5 text-center leading-5"
         >
           <span class="default-message flex items-center gap-2">
             <i class="fa-regular fa-clipboard"></i>
