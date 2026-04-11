@@ -3,7 +3,18 @@ window.addEventListener('load', function () {
   const form = document.getElementById('text-form');
   const container = document.getElementById('clipboard-container');
   const template = document.getElementById('clipboard-template');
+  
+  const uacSelectElement = document.getElementById('UAC');
+  const sbcSelectElement = document.getElementById('SBC');
+    uacSelectElement.addEventListener('change',(event)=>{
+      console.log('Selected UAC:' + event.target.value);
+    })
+    sbcSelectElement.addEventListener('change',(event)=>{
+      console.log(`Selected ISBC: ${event.target.value}`);
+    })
 
+      
+    
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -23,8 +34,6 @@ window.addEventListener('load', function () {
     const minNumberLength = document.getElementById('minNumberLength').value.trim();
 
     
-    
-
     const texts = [
       {
         title: 'ISBC side commands',
@@ -49,7 +58,7 @@ window.addEventListener('load', function () {
       {
         title: '',
         topic: 'Step 5: ADD IOFC for Peer SBC',
-        code: `ADD IOFC:OFCNAME="${tgName}_mogUAC_OFC",TG1NAME="mogUAC_${tgName}_TG",PTG1=100,WTG1=10,PTG2=100,WTG2=10,PTG3=100,WTG3=10,PTG4=100,WTG4=10,PTG5=100,WTG5=10,PTG6=100,WTG6=10,PTG7=100,WTG7=10,PTG8=100,WTG8=10,PTG9=100,WTG9=10,PTG10=100,WTG10=10,PTG11=100,WTG11=10,PTG12=100,WTG12=10,PTG13=100,WTG13=10,PTG14=100,WTG14=10,PTG15=100,WTG15=10,PTG16=100,WTG16=10,LATGNUM=1,RESELTG=N,MOG="PUBLIC",RESERVED1=0,RESERVED2=0,RESERVED3=0,RESERVED4=0;`
+        code: `ADD IOFC:OFCNAME="${tgName}_to_mogUAC_OFC",TG1NAME="mogUAC_${tgName}_TG",PTG1=100,WTG1=10,PTG2=100,WTG2=10,PTG3=100,WTG3=10,PTG4=100,WTG4=10,PTG5=100,WTG5=10,PTG6=100,WTG6=10,PTG7=100,WTG7=10,PTG8=100,WTG8=10,PTG9=100,WTG9=10,PTG10=100,WTG10=10,PTG11=100,WTG11=10,PTG12=100,WTG12=10,PTG13=100,WTG13=10,PTG14=100,WTG14=10,PTG15=100,WTG15=10,PTG16=100,WTG16=10,LATGNUM=1,RESELTG=N,MOG="PUBLIC",RESERVED1=0,RESERVED2=0,RESERVED3=0,RESERVED4=0;`
       },
       {
         title: '',
@@ -68,12 +77,12 @@ window.addEventListener('load', function () {
       },
       {
         title: '',
-        topic: 'Step 9: MOD DQI for external TG(Run before starting commercial call)',
+        topic: 'Step 9: MOD DQI for external TG(Only Run before starting call)',
         code: `MOD DQI:ENTYPE=IBCF,TGNAME="${tgName}_TG",VIDBW=415662,AUDBW=96000,APPBW=384000,DATBW=384000,CTRBW=8000,MSGDBW=1024000,DIBW=111000,DTBW=64000,DOBW=64000,MVIDBW=2097152,MAUDBW=356160,MAPPBW=806400,MDATBW=806400,MCTRBW=16800,MMSGBW=2048000,MIBW=134400,MTBW=134400,MOBW=134400,MMEDBW=4000000000,VIDDDSCP=0,AUDDDSCP=0,APPDDSCP=0,DATDDSCP=0,CTRDDSCP=0,MSGDDSCP=0,TXTDDSCP=0,IMGDDSCP=0,OTRDDSCP=0;`
       },
       {
         title: '',
-        topic: 'Step 10: MOD DQI for internal TG(Run before starting commercial call)',
+        topic: 'Step 10: MOD DQI for internal TG(Only Run before starting call)',
         code: `MOD DQI:ENTYPE=IBCF,TGNAME="mogUAC_${tgName}_TG",VIDBW=415662,AUDBW=96000,APPBW=384000,DATBW=384000,CTRBW=8000,MSGDBW=1024000,DIBW=111000,DTBW=64000,DOBW=64000,MVIDBW=2097152,MAUDBW=356160,MAPPBW=806400,MDATBW=806400,MCTRBW=16800,MMSGBW=2048000,MIBW=134400,MTBW=134400,MOBW=134400,MMEDBW=4000000000,VIDDDSCP=0,AUDDDSCP=0,APPDDSCP=0,DATDDSCP=0,CTRDDSCP=0,MSGDDSCP=0,TXTDDSCP=0,IMGDDSCP=0,OTRDDSCP=0;`
       },
       {
@@ -83,23 +92,23 @@ window.addEventListener('load', function () {
       },
       {
         title: '',
-        topic: 'Step:12: ADD RTANA for RSC',
-        code: `ADD RTANA: RAN="${tgName}", RSC=${TGnumber}, RSSC=${TGnumber}, TM=TMM, R=${TGnumber}, RN="${tgName}";`
-      },
-      {
-        title: '',
-        topic: 'Step:13: ADD OFC',
+        topic: 'Step:12: ADD OFC',
         code: `ADD OFC: O=${TGnumber}, ON="${tgName}", DOT=CMPX, DOL=HIGH;`
       },
       {
         title: '',
-        topic: 'Step:14: ADD SRT',
+        topic: 'Step:13: ADD SRT',
         code: `ADD SRT:SRC=${TGnumber},O=${TGnumber},SRN="${tgName}",RIN=65535,EI=0,CNC=CLD-0;`
       },
       {
         title: '',
-        topic: 'Step:15: ADD RT',
+        topic: 'Step:14: ADD RT',
         code: `ADD RT:R=${TGnumber},RN="${tgName}",IDTP=UNKWN,NAMECFG=,SNCM=SRT,SRST=SEQ,SRTPRI=LOW,SR1=${TGnumber},SANN=,STTP=INVALID;`
+      },
+      {
+        title: '',
+        topic: 'Step:15: ADD RTANA for RSC',
+        code: `ADD RTANA: RAN="${tgName}", RSC=${TGnumber}, RSSC=${TGnumber}, TM=TMM, R=${TGnumber}, RN="${tgName}";`
       },
       {
         title: '',
@@ -150,11 +159,12 @@ window.addEventListener('load', function () {
         successMsg.classList.remove('hidden');
 
         // Reset after 2 sec
+/*        
         setTimeout(() => {
           defaultMsg.classList.remove('hidden');
           successMsg.classList.add('hidden');
         }, 2000);
-
+*/
       });
       container.appendChild(clone);
       
@@ -164,7 +174,6 @@ window.addEventListener('load', function () {
     });
     const inputFields = ['signalIP', 'TG-name', 'TGnum', 'mediaIP', 'mediaMask','externalTGport','internaLocalPort','internaPeerPortForUAC','uacLocalPort','osuPort','prefix','maxNumberLength','minNumberLength'];
     inputFields.forEach((x)=>{
-      console.log(x)
       document.getElementById(x).value = '';
     })
   })
