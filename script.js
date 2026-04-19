@@ -7,12 +7,32 @@ window.addEventListener('load', function () {
   const uacSelectElement = document.getElementById('UAC');
   const sbcSelectElement = document.getElementById('SBC');
     uacSelectElement.addEventListener('change',(event)=>{
-      console.log('Selected UAC:' + event.target.value);
+      const UAC = event.target.value;
+      console.log('Selected UAC from Inside:' + UAC);
+      const selectedUAC = getUAC(UAC);
+      console.log(selectedUAC);
     })
     sbcSelectElement.addEventListener('change',(event)=>{
-      console.log(`Selected ISBC: ${event.target.value}`);
+      const SBC = event.target.value;
+      console.log(`Selected ISBC: ${SBC}`);
     })
 
+    
+    // console.log('from outside'+ SBC);
+  function getUAC(UAC){
+    const mogUacValue = {
+      uacIpForSBC:"10.70.9.178"
+    }
+    const rmnUacValue = {
+      uacIpForSBC:"10.70.1.178"
+    }
+    if(UAC=='mogUAC'){
+      return mogUacValue;
+    }
+    else{
+       return rmnUacValue;
+    }
+  }  
       
     
   form.addEventListener('submit', function (e) {
