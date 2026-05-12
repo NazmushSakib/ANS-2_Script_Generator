@@ -88,7 +88,7 @@
         </fieldset>
       </div>
       <fieldset class="fieldsetCSS">
-        <legend class="font-bold text-xl">SBC Information</legend>
+        <legend class="font-bold text-xl">UAC & SBC Information</legend>
         <div class="internalFlexCSS">
           <section class="flex-1">
             <div class="mb-8">
@@ -97,7 +97,7 @@
                 id="TG-name"
                 type="text"
                 placeholder="icx_is"
-                value="icx_is"
+                value=""
                 required
                 class="input-field"
               />
@@ -111,7 +111,7 @@
                 id="signalIP"
                 type="text"
                 placeholder="10.10.10.10"
-                value="10.10.10.10"
+                value=""
                 required
                 class="input-field"
               />
@@ -125,8 +125,7 @@
                 id="mediaIP"
                 type="text"
                 placeholder="10.10.10.10"
-                value="10.10.10.10"
-                required
+                value=""
                 class="input-field"
               />
             </div>
@@ -139,8 +138,7 @@
                 id="mediaMask"
                 type="text"
                 placeholder="255.255.255.x"
-                value="255.255.255.192"
-                required
+                value=""
                 class="input-field"
               />
             </div>
@@ -153,39 +151,39 @@
                 id="TGnum"
                 type="text"
                 placeholder="400"
-                value="400"
+                value=""
                 required
                 class="input-field"
               />
             </div>
             <div class="mb-8">
               <label for="externalTGport" class="labelCSS"
-                >LPORT = PPORT for External ISIPTG [SIPCFG local port
-                Range:5061-5188]</label
+                >LPORT = PPORT for External ISIPTG </label
               >
               <input
                 id="externalTGport"
                 type="text"
-                placeholder="5065"
-                value="5065"
+                placeholder="5060"
+                value=""
                 required
                 class="input-field"
               />
             </div>
             <div class="mb-8">
               <label for="internaLocalPort" class="labelCSS"
-                >ISBC Local Port For Internal ISIPTG TG
+                >ISBC Local Port(LPORT) For Internal ISIPTG TG [SIPCFG local port
+                Range:5061-5188]
               </label>
               <input
                 id="internaLocalPort"
                 type="text"
                 placeholder="5066"
-                value="5066"
+                value=""
                 required
                 class="input-field"
               />
             </div>
-            <div class="mb-8">
+            <div class="mb-8 hidden">
               <label for="internaPeerPortForUAC" class="labelCSS"
                 >ISBC PPORT for UAC for Internal ISIPTG [SIPCFG server port
                 Range:5051-5060]</label
@@ -193,87 +191,15 @@
               <input
                 id="internaPeerPortForUAC"
                 type="text"
-                placeholder="5053"
-                value="5053"
-                required
+                placeholder="5060"
+                value=""
                 class="input-field"
               />
             </div>
           </section>
         </div>
       </fieldset>
-      <fieldset class="fieldsetCSS my-8">
-        <legend class="font-bold text-xl">UAC Information</legend>
-        <div class="internalFlexCSS">
-          
-          <div class="flex-1">
-            <div class="mb-8">
-              <label for="uacLocalPort" class="labelCSS"
-                >Local Server Port(LSRVP) [SIPCFG server port
-                Range:5051-5060]</label
-              >
-              <input
-                id="uacLocalPort"
-                type="text"
-                placeholder="5053"
-                value="5053"
-                required
-                class="input-field"
-              />
-            </div>
-            <div class="mb-8">
-              <label for="prefix" class="labelCSS"
-                >Add a call test number(Optional)</label
-              >
-              <input
-                id="prefix"
-                type="text"
-                placeholder="Called or B-Party number"
-                value="01521493628"
-                class="input-field"
-              />
-            </div>
-            <div class="mb-8">
-              <label for="minNumberLength" class="labelCSS"
-                >Minimum Number Length(Optional)</label
-              >
-              <input
-                id="minNumberLength"
-                type="text"
-                placeholder="9"
-                value="9"
-                class="input-field"
-              />
-            </div>
-          </div>
-          <div class="flex-1">
-            <div class="mb-8">
-              <label for="osuPort" class="labelCSS">Remote URI(OSU) Port</label>
-              <input
-                id="osuPort"
-                type="text"
-                placeholder="5053"
-                value="5053"
-                required
-                class="input-field"
-              />
-            </div>
-            <div class="mb-8">
-              <label for="maxNumberLength" class="labelCSS"
-                >Maximum Number Length(Optional)</label
-              >
-              <input
-                id="maxNumberLength"
-                type="text"
-                placeholder="11"
-                value="11"
-                class="input-field"
-              />
-            </div>
-          </div>
-          
-        </div>
-      </fieldset>
+
       <div class="flex justify-center my-12">
         <button
           id="submit"

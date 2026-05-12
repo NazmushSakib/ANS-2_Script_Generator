@@ -60,6 +60,8 @@ ctgISBC_Signal_GatewayIP01: 10.70.20.105
 ctgISBC_Signal_GatewayIP02: 10.70.20.97
 ctgISBC_Media_GatewayIP01: 10.70.20.65
 ctgISBC_Media_GatewayIP02: 10.70.20.73
+
+
 ----------
 ISBC
 ----------
@@ -100,8 +102,18 @@ ADD SIPIPPAIR:TG=400,TGN="icx_is",ADDRTYPE=IPV4,IMN=1701,LSRVP=5053,OSU="10.70.9
 
 ADD CNACLD: LP=0, PFX=K'0097142466777, CSTP=BASE, CSA=ITT, RSC=400, MINL=11, MAXL=16, CHSC=0, EA=NO, SDESCRIPTION="ios_call_test";
 
+      {
+        title: '',
+        topic: 'Step:15: ADD RTANA for RSC',
+        code: `ADD RTANA: RAN="${tgName}", RSC=${TGnumber}, RSSC=${TGnumber}, TM=TMM, R=${TGnumber}, RN="${tgName}";`
+      },
 
-
+,
+      {
+        title: '',
+        topic: 'Step:18: ADD CNACLD (Optional)',
+        code: `ADD CNACLD: LP=0, PFX=K'${prefix}, CSTP=BASE, CSA=ITT, RSC=${TGnumber}, MINL=${minNumberLength}, MAXL=${maxNumberLength}, CHSC=0, EA=NO, SDESCRIPTION="${tgName}_call_test";`
+      }
 
 
 
