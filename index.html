@@ -52,6 +52,18 @@
           @apply text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center leading-5 mx-auto;
         }
       }
+      @layer utilities {
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        input[type="number"] {
+          -moz-appearance: textfield;
+          appearance: textfield;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-200 max-w-3/4 mx-auto">
@@ -100,6 +112,7 @@
                 value=""
                 required
                 class="input-field"
+                maxlength="31"
               />
             </div>
 
@@ -111,6 +124,7 @@
                 id="signalIP"
                 type="text"
                 placeholder="10.10.10.10"
+                oninput="this.value=this.value.replace(/[^0-9.]/g,'')"
                 value=""
                 required
                 class="input-field"
@@ -125,6 +139,7 @@
                 id="mediaIP"
                 type="text"
                 placeholder="10.10.10.10"
+                oninput="this.value=this.value.replace(/[^0-9.]/g,'')"
                 value=""
                 class="input-field"
               />
@@ -138,6 +153,7 @@
                 id="mediaMask"
                 type="text"
                 placeholder="255.255.255.x"
+                oninput="this.value=this.value.replace(/[^0-9.]/g,'')"
                 value=""
                 class="input-field"
               />
@@ -149,7 +165,7 @@
               <label for="TGnum" class="labelCSS">TG Number</label>
               <input
                 id="TGnum"
-                type="text"
+                type="number"
                 placeholder="400"
                 value=""
                 required
@@ -162,7 +178,7 @@
               >
               <input
                 id="externalTGport"
-                type="text"
+                type="number"
                 placeholder="5060"
                 value=""
                 required
@@ -171,12 +187,11 @@
             </div>
             <div class="mb-8">
               <label for="internaLocalPort" class="labelCSS"
-                >ISBC Local Port(LPORT) For Internal ISIPTG TG [SIPCFG local port
-                Range:5061-5188]
+                >ISBC Local Port(LPORT) For Internal ISIPTG = UAC OSU Port
               </label>
               <input
                 id="internaLocalPort"
-                type="text"
+                type="number"
                 placeholder="5066"
                 value=""
                 required
@@ -190,7 +205,7 @@
               >
               <input
                 id="internaPeerPortForUAC"
-                type="text"
+                type="number"
                 placeholder="5060"
                 value=""
                 class="input-field"
