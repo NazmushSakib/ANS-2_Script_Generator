@@ -329,20 +329,20 @@ UMG Media IP :
 Interconnection with peer end IP IMS/ICX :
 
 MOG ISBC ip to give peer end: 
-Signalling : 10.70.9.98
-Media : 10.70.9.2 - 10.70.9.11
+Signalling : 10.70.9.96/28   10.70.9.98
+Media : 10.70.9.0/27    10.70.9.2 - 10.70.9.11
 
 RMN ISBC ip to give peer end: 
-Signalling : 10.70.1.98
-Media : 10.70.1.2 - 10.70.1.11
+Signalling :10.70.1.96/28  10.70.1.98
+Media :10.70.1.0/27  10.70.1.2 - 10.70.1.11
 
 CTG ISBC ip to give peer end: 
-External Signalling : 10.70.20.177
-External Media : 10.70.20.169
+External Signalling : 10.70.20.177/32
+External Media : 10.70.20.169/32
 
 KHL ISBC ip to give peer end:
-External ISBC : 10.70.16.177
-External Media : 10.70.16.169
+External ISBC : 10.70.16.177/32
+External Media : 10.70.16.169/32
 
 SBN MOTN ZTE IMS
 
