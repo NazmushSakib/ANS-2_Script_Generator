@@ -74,13 +74,24 @@
           <legend class="font-bold text-xl">Connecting Node</legend>
           <div class="w-3/4 mx-auto flex flex-col md:flex-row justify-between gap-10">
             <div class="flex-1">
-              <label for="UAC" class="block mb-2.5 text-sm font-medium"
-                >Select an MGC</label
+              <label for="primaryUAC" class="block mb-2.5 text-sm font-medium"
+                >Select Primary MGC</label
               >
-              <select id="UAC" class="select-btn">
+              <select id="primaryUAC" class="select-btn">
                 <option selected>Choose an UAC</option>
                 <option value="mogUAC">Moghbazar_UAC</option>
                 <option value="rmnUAC">Ramna_UAC</option>
+              </select>
+            </div>
+
+            <div class="flex-1">
+              <label for="secondaryUAC" class="block mb-2.5 text-sm font-medium"
+                >Select Secondary MGC</label
+              >
+              <select id="secondaryUAC" class="select-btn">
+                <option selected>Choose an UAC</option>
+                <option value="mogUAC">Moghbazar_UAC</option>
+                <option  value="rmnUAC">Ramna_UAC</option>
               </select>
             </div>
 
@@ -174,7 +185,7 @@
             </div>
             <div class="mb-8">
               <label for="externalTGport" class="labelCSS"
-                >LPORT = PPORT for External ISIPTG </label
+                >PPORT (Peer Port) for External ISIPTG </label
               >
               <input
                 id="externalTGport"
@@ -186,11 +197,11 @@
               />
             </div>
             <div class="mb-8">
-              <label for="internaLocalPort" class="labelCSS"
+              <label for="internalLocalPort" class="labelCSS"
                 >ISBC Local Port(LPORT) For Internal ISIPTG = UAC OSU Port
               </label>
               <input
-                id="internaLocalPort"
+                id="internalLocalPort"
                 type="number"
                 placeholder="5066"
                 value=""
