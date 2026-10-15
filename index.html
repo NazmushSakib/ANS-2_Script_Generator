@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ANS-2 New TG Script Geneartor</title>
+    <link rel="icon" href="./favicon-32x32.png" type="image/png" sizes="">
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -197,6 +198,18 @@
               />
             </div>
             <div class="mb-8">
+              <label for="LPORTforExternalTG" class="labelCSS"
+                >ISBC LPORT for External ISIPTG</label
+              >
+              <input
+                id="LPORTforExternalTG"
+                type="number"
+                placeholder="5060"
+                value=""
+                class="input-field"
+              />
+            </div>
+            <div class="mb-8">
               <label for="internalLocalPort" class="labelCSS"
                 >ISBC Local Port(LPORT) For Internal ISIPTG = UAC OSU Port
               </label>
@@ -209,19 +222,7 @@
                 class="input-field"
               />
             </div>
-            <div class="mb-8 hidden">
-              <label for="internaPeerPortForUAC" class="labelCSS"
-                >ISBC PPORT for UAC for Internal ISIPTG [SIPCFG server port
-                Range:5051-5060]</label
-              >
-              <input
-                id="internaPeerPortForUAC"
-                type="number"
-                placeholder="5060"
-                value=""
-                class="input-field"
-              />
-            </div>
+            
           </section>
         </div>
       </fieldset>
